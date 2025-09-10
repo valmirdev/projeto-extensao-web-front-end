@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projeto de Extensão</title>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Manifest PWA (criaremos depois) -->
+    <link rel="manifest" href="manifest.webmanifest" />
+
+    <!-- Meta básica de PWA e tema -->
+    <meta name="theme-color" content="#0ea5e9" />
+
+    <!--Acessibilidade: linguagem definida, estrutura semântica será usada no <body>-->
+  </head>
+  <body class="min-h-screen bg-slate-50 text-slate-800">
+    <header class="max-w-3xl mx-auto px-4 py-6">
+      <h1 class="text-3xl font-bold text-sky-600">Projeto de Extensão</h1>
+      <p class="mt-1 text-slate-600">
+        Site acessível, responsivo e instalável (PWA).
+      </p>
+    </header>
+
+    <main id="app" class="max-w-3xl mx-auto px-4 pb-20">
+      <section
+        aria-labelledby="sec-intro"
+        class="bg-white rounded-xl shadow p-6"
+      >
+        <h2 id="sec-intro" class="text-xl font-semibold">Boas-vindas</h2>
+        <p class="mt-2">
+          Contador: <strong class="text-sky-700">{{ contador }}</strong>
+        </p>
+
+        <button
+          class="mt-4 inline-flex items-center gap-2 rounded-lg bg-sky-600 px-4 py-2 text-white hover:bg-sky-700 focus:outline-none focus:ring-2 focus:ring-sky-400"
+          aria-label="Somar um ao contador"
+          @click="contador++"
+        >
+          Somar +1
+        </button>
+      </section>
+    </main>
+
+    <footer class="max-w-3xl mx-auto px-4 py-8 text-sm text-slate-500">
+      <p>© 2025 — Projeto de Extensão Front-end</p>
+    </footer>
+
+    <!-- Vue 3 (CDN, produção) -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+
+    <!-- App -->
+    <script src="main.js"></script>
+
+    <!-- PWA (registraremos o service worker) -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js");
+        });
+      }
+    </script>
+  </body>
+</html>
