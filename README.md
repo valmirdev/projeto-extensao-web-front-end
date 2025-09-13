@@ -1,2 +1,1 @@
-https://valmirdev.github.io/projeto-extensao-web-front-end/
-# projeto-extensao-web-front-end
+exclusão de todo o texto do readme.
